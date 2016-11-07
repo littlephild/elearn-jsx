@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { selectUser } from '../actions/index';
 
@@ -8,7 +8,11 @@ class UserList extends Component{
   listUsersItems(){
     return this.props.users.map((user) => {
        return(
-           <li className="list-group-item" key={user.id.toString()}><a href="#">{user.fullName}</a></li>
+           <li className="list-group-item"
+             key={user.id.toString()}>
+             <a href="#" onClick={()=>this.props.selectUsers(user)}>
+             {user.fullName}</a>
+           </li>
        );
     });
   }
